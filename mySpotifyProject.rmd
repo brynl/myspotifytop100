@@ -1,0 +1,194 @@
+---
+title: "SpotifyStats"
+author: Bryn Louise
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, message=FALSE}
+# Import libraries 
+library(spotifyr)
+library(tidyverse)
+library(knitr)
+library(ggbiplot)
+library(ggplot2)
+library(plotly)
+library(grid)
+library(gridExtra)
+library(ggfortify)
+library(factoextra)
+```
+
+```{r}
+# Set parameter to work with Spotify API
+Sys.setenv(SPOTIFY_CLIENT_ID = 'f2827ef9fcf44a63bc5a17fdd48b3df0')
+Sys.setenv(SPOTIFY_CLIENT_SECRET = 'f811d4aedeae4c2e815b9c7c2462c32a')
+access_token <- get_spotify_access_token()
+```
+
+```{r}
+# Get my playlist tracks and audio features
+myplaylists <- get_user_playlists('mandelbrotian')
+playlist_tracks <- get_playlist_tracks(myplaylists)
+playlist_audio_features <- get_track_audio_features(playlist_tracks)
+playlist_tracks_features <- cbind(playlist_tracks, playlist_audio_features)
+```
+
+```{r}
+# Remove Redundant Columns 
+clean_playlist_tracks_features <- playlist_tracks_features[-c(1,2,7,8,20)]
+```
+
+```{r}
+head(clean_playlist_tracks_features)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+# Use only 6 of the features
+playlist_features_reduced = playlist_audio_features[, c(1:2, 6:9)]
+
+# Find principal compenents of my Spotify Playlist
+myplaylist.pca <- prcomp(playlist_features_reduced , center = TRUE, scale. = TRUE)
+head(myplaylist.pca, n = 2)
+```
+
+```{r}
+# Use first 2 principal components
+my_pca12 = (myplaylist.pca$x[,c('PC1','PC2')])
+# Convert to dataframe
+data.frame(my_pca12)
+```
+
+
+```{r}
+# Find optimal number of clusters
+
+# Within sum of squares method
+fviz_nbclust(my_pca12, kmeans, method = "wss") +
+  labs(subtitle = "Elbow method")
+```
+
+
+```{r}
+#Use the silhouette method to determine the optimal number of clusters
+fviz_nbclust(my_pca12, kmeans, method = "silhouette")+
+  labs(subtitle = "Silhouette method")
+```
+
+
+```{r}
+# Cluster data with 3 centers using kmeans
+my_km3 = kmeans(my_pca12,3,nstart=25)
+my_km3
+```
+
+
+
+
+```{r}
+df_out <- as.data.frame(myplaylist.pca$x)
+df_out$group<-my_km3$cluster
+head(df_out)
+```
+
+
+
+```{r}
+# Combine PCA df with song playlist df
+my_spotify_full_df = cbind(clean_playlist_tracks_features, df_out)
+head(my_spotify_full_df)
+```
+
+```{r}
+autoplot(data=playlist_features_reduced, kmeans(playlist_features_reduced,3
+), frame = FALSE, loadings = TRUE, loadings.label = TRUE, frame.type = 'norm')+
+  labs(title = "Bryn's Top Songs, All Features")
+```
+
+
+
+
+```{r}
+my_spotify_full_df$group = as.factor(my_spotify_full_df$group)
+p<-ggplot(my_spotify_full_df,aes(x=PC1,y=PC2, color=group, text = paste("Track Name:", track_name, '\n', "Artist:", artist_name)))
+p<-p+geom_point()
+p<-p+ggtitle("Bryn's Top 100")
+ggplotly(p)
+```
+
+
+```{r, message=FALSE}
+# Load Spotify top 100 playlist
+library(readr)
+featuresdf <- read_csv("featuresdf.csv")
+reduced_features_spotifydf <-featuresdf[,c(4,5,9:13)]
+```
+
+
+
+```{r}
+spotify_km1 = kmeans(reduced_features_spotifydf,centers=4, nstart=25)
+spotify_playlist.pca <- prcomp(reduced_features_spotifydf, center = TRUE, scale. = TRUE)
+```
+
+
+```{r}
+spotify_df_out <- as.data.frame(spotify_playlist.pca$x)
+spotify_df_out$group<-spotify_km1$cluster
+head(df_out)
+```
+
+
+```{r}
+spotify_full_df = cbind(featuresdf, spotify_df_out)
+head(spotify_full_df)
+```
+
+
+
+```{r}
+spotify_features_reduced <-spotify_full_df[,c(4,5,7,9:13)]
+
+autoplot(data=spotify_features_reduced, kmeans(spotify_features_reduced,3
+), frame = FALSE, loadings = TRUE, loadings.label = TRUE, frame.type = 'norm')+
+  labs(title = "Spotify's Top Songs, All Features")
+```
+
+
+
+
+
+
+
+```{r}
+spotify_full_df$group = as.factor(spotify_full_df$group)
+p<-ggplot(spotify_full_df,aes(x=PC1,y=PC2, color=group, text = paste("Track Name:", name, '\n', "Artist:", artists, '\n', "Danceability:", danceability)))
+p<-p+geom_point() 
+p<-p+ggtitle("Spotify's Top 100")
+ggplotly(p)
+```
+
+
+
+
+
+
+
+
+
+
+
