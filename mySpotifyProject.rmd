@@ -1,6 +1,6 @@
 ---
 title: "SpotifyStats"
-author: Bryn Louise
+author: Bryn
 output:
   html_document:
     df_print: paged
