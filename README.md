@@ -50,10 +50,30 @@ To clean data, I simply removed all columns that were not the song title, band n
 
 ### Choosing Number of Clusters 
 
-### Choosing Components
-
-### Results
-
 ## Kmeans Clustering
 
+
+
 ## Conclusion
+
+My top listened to music is more diverse and much less "danceable" than Spotify's top listend to. 
+
+##### Strengths
+* Can visualize “true” styles of music, rather than labeled genres 
+* Understanding diversity of each individual’s taste in music
+##### Weaknesses
+* Randomness characteristic of K-Means
+* Different numbers of clusters for different features/datasets
+* Difficult to interpret what each cluster represents
+* Inclusion of Hot 100, limited sample size
+##### Potential Extensions
+* Hierarchical Clustering of music
+* Decision Trees
+* Recommender Systems
+* Changes in taste over time
+* Predicting an individual’s musical taste
+
+
+### Appendix 
+
+[Here](file:///home/bryn/Documents/Rstuff/SpotifyStats/mySpotifyProject.html)  is the full Rmarkdown file knitted in html format
