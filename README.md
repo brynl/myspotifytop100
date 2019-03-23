@@ -57,6 +57,7 @@ To clean data, I simply removed all columns that were not the song title, song u
 ## Kmeans Clustering
 ![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/mykm.png)
 ![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/plotly.png)
+![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/myauto.png)
 ![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/spotifydf.png)
 
 ## Conclusion
@@ -78,7 +79,5 @@ My top listened to music is more diverse and much less "danceable" than Spotify'
 * Changes in taste over time
 * Predicting an individual’s musical taste
 
-
-### Appendix 
 
 
