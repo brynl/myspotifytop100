@@ -52,10 +52,14 @@ To clean data, I simply removed all columns that were not the song title, song u
 ![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/pca_1.png)
 
 ### Choosing Number of Clusters 
+I decided to use 3 clusters because of the outputs of the following graphs. 
+
 ![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/wss.png)
 ![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/sil.png)
+
 ## Kmeans Clustering
 ![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/mykm.png)
+I used plotly so I could easily see which points corresponded to which songs. 
 ![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/plotly.png)
 ![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/myauto1.png)
 ![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/spotifydf.png)
