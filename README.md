@@ -18,7 +18,7 @@ the Spotify API.
 
 A top 100 songs on Spotify overall was used to 
 compare my music taste with Spotify's total listeners. The data 
-was obtained from kaggle. 
+was obtained from [kaggle](https://www.kaggle.com/nadintamer/top-tracks-of-2017). 
 
 ## Spotify Features Data
 
@@ -40,6 +40,19 @@ I decided to use the following features:
 
 **valence:** A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).
 
+## Data Cleaning and Preparation
 
+Since all the data was on a scale from 0.0 to 1.0, no further scaling was necessary to prepare data for machine learning algorithms. 
 
-Since all the data was on a scale from 0.0 to 1.0 no further scaling was necessary to prepare data for machine learning algorithms. 
+To clean data, I simply removed all columns that were not the song title, band name, and the pertinent features. 
+
+## Principal Compenents Analysis 
+
+### Choosing Number of Clusters 
+
+### Choosing Components
+
+### Results
+
+## Kmeans Clustering
+
