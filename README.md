@@ -44,11 +44,14 @@ I decided to use the following features:
 
 Since all the data was on a scale from 0.0 to 1.0, no further scaling was necessary to prepare data for machine learning algorithms. 
 
-To clean data, I simply removed all columns that were not the song title, band name, and the pertinent features. 
+To clean data, I simply removed all columns that were not the song title, song uri, band name, and the pertinent features. 
+![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/songs_df.png)
+
 
 ## Principal Compenents Analysis 
 
 ### Choosing Number of Clusters 
+
 
 ## Kmeans Clustering
 
