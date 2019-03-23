@@ -49,13 +49,15 @@ To clean data, I simply removed all columns that were not the song title, song u
 
 
 ## Principal Compenents Analysis 
+![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/pca_1.png)
 
 ### Choosing Number of Clusters 
-
-
+![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/wss.png)
+![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/sil.png)
 ## Kmeans Clustering
-
-
+![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/mykm.png)
+![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/plotly.png)
+![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/spotifydf.png)
 
 ## Conclusion
 
