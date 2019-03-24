@@ -62,7 +62,7 @@ I decided to use 3 clusters because of the outputs of the following graphs.
 I used plotly so I could easily see which points corresponded to which songs. 
 ![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/plotly.png)
 ![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/myauto1.png)
-![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/spotifydf.png)
+![Alt text](https://github.com/brynl/myspotifytop100/blob/master/pics/spotifykm.png)
 
 ## Conclusion
 
